@@ -18,36 +18,31 @@ for idx, val in enumerate(inputFile):
     start = coords[0].split(",")
     end = coords[1].split(",")
 
-    x1 = min(int(start[0]),int(end[0]))
-    y1 = min(int(start[1]),int(end[1]))
-    x2 = max(int(start[0]),int(end[0]))
-    y2 = max(int(start[1]),int(end[1]))
+    y = int(start[1])
+    x = int(start[0])
+    ya = int(end[1])
+    xa = int(end[0])
+    yinc = 1
+    xinc = 1
 
-    if y1 == y2:
-        for x in range(x1,x2+1):
-            grid[y1][x] += 1
+    if y > ya:
+        yinc = -1
+    if y == ya:
+        yinc = 0
 
-    if x1 == x2:        
-        for y in range(y1,y2+1):
-            grid[y][x1] += 1
+    if x > xa:
+        xinc = -1
+    if x == xa:
+        xinc = 0 
+        
+    xrang = abs(x-xa)
+    yrang = abs(y-ya)
+    maxrange = max(xrang,yrang)
 
-    if y1 != y2 and x1 != x2:        
-        y = int(start[1])
-        x = int(start[0])
-        ya = int(end[1])
-        xa = int(end[0])
-        yinc = 1
-        xinc = 1
-
-        if y > ya:
-            yinc = -1
-        if x > xa:
-            xinc = -1
-
-        for idx in range(x1,x2+1): 
-            grid[y][x] += 1
-            y += yinc
-            x += xinc
+    for idx in range(maxrange+1): 
+        grid[y][x] += 1
+        y += yinc
+        x += xinc
 
 for x in range(rows):
     for y in range(cols):
