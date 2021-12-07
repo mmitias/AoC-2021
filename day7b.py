@@ -1,4 +1,4 @@
-#Python solution for Day 7 puzzle
+#Python solution for Day 7 puzzle, part 2
 
 def readFile(fileName):
         fileObj = open(fileName, "r") #opens the file in read mode
