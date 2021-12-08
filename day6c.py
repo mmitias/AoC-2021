@@ -9,7 +9,7 @@ def readFile(fileName):
 def fishCount(fish,startDay):
     global count
     if startDay<=days:
-        children = (days-startDay-fish)/7 + 1
+        children = (days-startDay-fish)//7 + 1
         children += fishCount(8,startDay+fish)
         return children
     else:
@@ -26,4 +26,4 @@ for idx, fish in enumerate(fishSet):
 
 for idx, fish in enumerate(fishSet):
     count += fishCount(fish,1)
-print count+fishsum
+print (count+fishsum)

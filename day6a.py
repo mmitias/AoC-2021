@@ -22,4 +22,4 @@ for day in range(days):
         else:
             fishSet[idx] -= 1
     #print fishSet
-print len(fishSet)
+print (len(fishSet))

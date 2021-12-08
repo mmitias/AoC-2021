@@ -40,4 +40,4 @@ for idx in range(setsize):
     if result<lowdist:
         lowdist = result
 
-print lowdist
+print (lowdist)

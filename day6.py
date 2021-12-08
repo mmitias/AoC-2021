@@ -26,5 +26,5 @@ for day in range(8,days):
     dayinc[day] += newfish
     count += newfish
 
-print count
+print (count)
 

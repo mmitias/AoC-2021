@@ -1,4 +1,4 @@
-#Python solution for Day 6 puzzle
+#Python solution for Day 6 puzzle, using recursion and counting each fish
 
 def readFile(fileName):
         fileObj = open(fileName, "r") #opens the file in read mode
@@ -26,4 +26,4 @@ for idx, fish in enumerate(fishSet):
 for idx, fish in enumerate(fishSet):
     fishCount(fish,1)
 
-print count+fishsum
+print (count+fishsum)

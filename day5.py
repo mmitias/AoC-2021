@@ -35,5 +35,5 @@ for x in range(rows):
     for y in range(cols):
         if grid[x][y] > 1: counter += 1
 
-print counter
+print (counter)
     

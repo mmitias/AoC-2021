@@ -49,6 +49,7 @@ for x in range (1, len(inputFile), 6):
     allBoards.append(curBoard)
 
 boardList = range(len(allBoards))
+boardList = list(boardList)
 boardNum = 9999
 
 for y in bingoCalls:
