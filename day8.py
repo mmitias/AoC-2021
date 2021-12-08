@@ -20,4 +20,4 @@ for idx, line in enumerate(inputFile):
         if lol == 2 or lol == 3 or lol == 4 or lol == 7: count +=1
         #print outputlist
 
-print count
+print (count)

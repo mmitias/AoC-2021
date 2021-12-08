@@ -96,9 +96,9 @@ for idx, line in enumerate(inputFile):
         if all(item in two for item in digitlist) and all(item in digitlist for item in two): newnum += "2"
         if all(item in zero for item in digitlist) and all(item in digitlist for item in zero): newnum += "0"
 
-    print newnum
+    print (newnum)
     newint = int(newnum)
     count += newint
 
 
-print count
+print (count)
