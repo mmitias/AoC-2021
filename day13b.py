@@ -9,9 +9,7 @@ def readFile(fileName):
 def horizFold(coords, foldx):
     newcoords = []
     for row in coords:
-        x = row[0]
-        y = row[1]
-        #print(x,y)
+        x, y = row
         if x < foldx: 
             newx = (foldx - 1) - x
         else:
@@ -22,9 +20,7 @@ def horizFold(coords, foldx):
 def vertFold(coords, foldy):
     newcoords = []
     for row in coords:
-        x = row[0]
-        y = row[1]
-        #print(x,y)
+        x, y = row
         if y > foldy: 
             newy = foldy - (y - foldy)
         else:
@@ -40,35 +36,26 @@ ymax = 0
 inputFile = readFile("day13.txt")
 
 for row in inputFile:
-    if len(row) > 0 and not row.startswith("fold"):
-        x, y = row.split(",")
-        x = int(x)
-        y = int(y)
-
+    if len(row) and not row.startswith("fold"):
+        x, y = map(int,row.split(","))
         coords.append([x,y])
-        #print(x,y)
 
     if row.startswith("fold"):
-        parsefold = row.split("=")
-        foldline = parsefold[1]
-        remainderstr = parsefold[0]
+        remainderstr,foldline = row.split("=")
         foldaxis = remainderstr[-1]
         folds.append([foldaxis,foldline])
 
 for fold in folds:
     foldaxis = int(fold[1])
-    #print (fold[0],foldaxis)
     if fold[0] == "x":
         coords = horizFold(coords,foldaxis)
-
     else:
         coords = vertFold(coords,foldaxis)
 
 visibleplot = []
 
 for row in coords:
-    x = row[0]
-    y = row[1]
+    x,y = row
     if x > xmax: xmax = x
     if y > ymax: ymax = y
 
@@ -79,8 +66,7 @@ for y in range(ymax+1):
     visibleplot.append(visiblerow.copy())
 
 for row in coords:
-    x = row[0]
-    y = row[1]
+    x,y = row
     visibleplot[y][x] = "#"
         
 for row in visibleplot:

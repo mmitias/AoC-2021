@@ -9,51 +9,35 @@ def readFile(fileName):
 inputFile = readFile("day13.txt")
 
 def horizFold(coords, foldx):
-
     newcoords = []
     for row in coords:
-        x = row[0]
-        y = row[1]
-        #print(x,y)
+        x, y = row
         if x < foldx: 
             newx = (foldx - 1) - x
         else:
             newx = x - (foldx + 1)
-
         newcoords.append([newx,y])
     return newcoords
 
 def vertFold(coords, foldy):
-
     newcoords = []
     for row in coords:
-        x = row[0]
-        y = row[1]
-        #print(x,y)
+        x, y = row
         if y < foldy: 
             newy = (foldy - 1) - y
         else:
             newy = y - (foldy + 1)
-
         newcoords.append([x,newy])
     return newcoords
 
 coords = []
 dedup = []
-point = []
-xmax = 0
-ymax = 0
+foldx = 655
 
 for row in inputFile:
     if len(row) > 0 and not row.startswith("fold"):
-        x, y = row.split(",")
-        x = int(x)
-        y = int(y)
-
+        x, y = map(int,row.split(","))
         coords.append([x,y])
-        #print(x,y)
-
-foldx = 655
 
 coords = horizFold(coords,foldx)
 for point in coords:
