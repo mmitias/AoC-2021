@@ -31,7 +31,7 @@ for idx, char in enumerate(polymer[:-1]):
 
 pairscopy = pairs.copy()
 
-for idx in range(depth):
+for _ in range(depth):
     for pair, count in pairs.items():
         index = pairlist.index(pair)
         insertchar = addchar[index]

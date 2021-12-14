@@ -8,38 +8,27 @@ def readFile(fileName):
 
 inputFile = readFile("day14.txt")
 
-polymer = inputFile[0]
+polymer = list(inputFile[0])
 pairs = []
 addchar = []
-polychars = list(polymer)
+charcount = {}
 
-for idx in range(2, len(inputFile)):
-    instruct = inputFile[idx]
-    instruct = instruct.split(" -> ")
-    pairs.append(instruct[0])
-    addchar.append(instruct[1])
+for row in inputFile[2:]:
+    key, value = row.split(" -> ")
+    pairs.append(key)
+    addchar.append(value)
 
-ydx = 0
-for idx in range(10):
-    newpoly = polychars[0]
-    for ydx in range(len(polychars)):
-        if ydx < len(polychars)-1:
-            pair = polychars[ydx] + polychars[ydx+1]
-            index = pairs.index(pair)
-            newpoly += addchar[index] + polychars[ydx+1]
-    polychars = list(newpoly)
-#    print(newpoly)
+for _ in range(10):
+    newpoly = polymer[0]
+    for idx, char in enumerate(polymer[:-1]):
+        pair = char + polymer[idx+1]
+        index = pairs.index(pair)
+        newpoly += addchar[index] + polymer[idx+1]
+    polymer = list(newpoly)
 
-b = polychars.count("B")
-c = polychars.count("C")
-n = polychars.count("N")
-h = polychars.count("H")
-p = polychars.count("P")
-k = polychars.count("K")
-v = polychars.count("V")
-s = polychars.count("S")
-zero = polychars.count("O")
+for char in polymer:
+     charcount[char] = charcount.get(char, 0) + 1
 
-most = max([b,c,n,h,p,k,v,s,zero])
-least = min([b,c,n,h,p,k,v,s,zero])
+most = max(charcount.values())
+least = min(charcount.values())
 print(most - least)
