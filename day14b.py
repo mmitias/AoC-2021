@@ -8,8 +8,7 @@ def readFile(fileName):
 
 pairs = {}
 chars = {}
-addchar = []
-pairlist = []
+pairmap = {}
 depth = 40
 
 inputFile = readFile("day14.txt")
@@ -18,8 +17,7 @@ polymer = list(inputFile[0])
 for row in inputFile[2:]:
     key, value = row.split(" -> ")
     pairs[key] = 0
-    pairlist.append(key)
-    addchar.append(value)
+    pairmap[key] = value
     chars[value] = 0
 
 for char in polymer:
@@ -33,16 +31,14 @@ pairscopy = pairs.copy()
 
 for _ in range(depth):
     for pair, count in pairs.items():
-        index = pairlist.index(pair)
-        insertchar = addchar[index]
+        insertchar = pairmap[pair]
         leftpair = pair[0] + insertchar
         rightpair = insertchar + pair[1]        
 
-        if pairs[pair]:
-            pairscopy[pair] -= pairs[pair]
-            pairscopy[leftpair] += pairs[pair]
-            pairscopy[rightpair] += pairs[pair]
-            chars[insertchar] += pairs[pair]
+        pairscopy[pair] -= pairs[pair]
+        pairscopy[leftpair] += pairs[pair]
+        pairscopy[rightpair] += pairs[pair]
+        chars[insertchar] += pairs[pair]
 
     pairs = pairscopy.copy()
 
