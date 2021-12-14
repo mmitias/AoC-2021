@@ -9,21 +9,18 @@ def readFile(fileName):
 inputFile = readFile("day14.txt")
 
 polymer = list(inputFile[0])
-pairs = []
-addchar = []
+pairmap = {}
 charcount = {}
 
 for row in inputFile[2:]:
     key, value = row.split(" -> ")
-    pairs.append(key)
-    addchar.append(value)
+    pairmap[key] = value
 
 for _ in range(10):
     newpoly = polymer[0]
-    for idx, char in enumerate(polymer[:-1]):
-        pair = char + polymer[idx+1]
-        index = pairs.index(pair)
-        newpoly += addchar[index] + polymer[idx+1]
+    for idx, char in enumerate(polymer[:-1], start = 1):
+        pair = char + polymer[idx]
+        newpoly += pairmap[pair] + polymer[idx]
     polymer = list(newpoly)
 
 for char in polymer:

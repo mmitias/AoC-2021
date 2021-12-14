@@ -23,8 +23,8 @@ for row in inputFile[2:]:
 for char in polymer:
     chars[char] += 1
 
-for idx, char in enumerate(polymer[:-1]):
-    pair = char + polymer[idx+1]
+for idx, char in enumerate(polymer[:-1], start = 1):
+    pair = char + polymer[idx]
     pairs[pair] += 1
 
 pairscopy = pairs.copy()
