@@ -60,15 +60,14 @@ for idx, row in enumerate(inputFile):
     key, value = row.split("-")
 
     if key in data: 
-        data[key].append(value)
+        data[key] += [value]
     else: 
-        data[key] = []
-        data[key].append(value)
+        data[key] = [value]
+
     if value in data: 
-        data[value].append(key)
+        data[value] += [key]
     else: 
-        data[value] = []
-        data[value].append(key)
+        data[value] = [key]
 
 data["end"] = []
 
